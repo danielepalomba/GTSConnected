@@ -20,4 +20,6 @@ The project is divided into the following main modules:
 - **AWS S3:** Management of uploaded images.
 - **Docker:** Dockerfile and configurations for containerization.
 
+  **To set your profile as ADMIN you have to go in UserService.java, find method UserRegistration, replace email with yours**
+
 Try it: https://gtsconnected3.onrender.com
