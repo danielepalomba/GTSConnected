@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area personale</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/user-details.css">
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+<div class="container">
+    <h1>Area personale</h1>
+    <div class="grid-container">
+        <div class="data-container">
+            <p>Nome: <span th:text="${user.firstName}"></span></p>
+            <p>Cognome: <span th:text="${user.lastName}"></span></p>
+            <p>Email: <span th:text="${user.email}"></span></p>
+            <p>Data di nascita: <span th:text="${user.getDateBirthFormatted()}"></span></p>
+        </div>
+        <div class="wrapper-container">
+            <div class="container-img">
+                <img src="https://page-imgs.s3.eu-north-1.amazonaws.com/area-personale.png" alt="biker">
+                <h3>Hai partecipato in totale a: <span th:text="${user.getBikers().size()}"></span> viaggio/i</h3>
+            </div>
+        </div>
+    </div>
+    <div class="btns-container">
+        <div class="container-btn">
+            <h6>Vuoi cambiare la tua password?</h6>
+            <a class="funct-btn" href="/users/user-details/change-password">Cambia password</a>
+        </div>
+        <div class="delete-account-btn">
+            <h6>Elimina il mio account</h6>
+            <a class="funct-btn" href="/users/user-details/delete-account">Elimina</a>
+        </div>
+    </div>
+</div>
+<div style="height: 100px;"></div>
+<div th:replace="footer :: html"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

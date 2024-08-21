@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #chat-box {
+            height: 80vh;
+            overflow-y: auto;
+            border: 3px solid #000000;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        #chat-box p {
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        #chat-box p.text-right {
+            background-color: #dcf8c6;
+        }
+        #chat-box p.text-left {
+            background-color: #ece5dd;
+        }
+        #main-c {
+            padding:1%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+<div id="main-c" class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="chat-box">
+                <p class="alert alert-info">La chat verrà automaticamente cancellata dopo la fine del viaggio.</p>
+                <div id="messages" th:each="message : ${messages}">
+                    <p th:class="${message.sender.id == currentUser.id} ? 'text-right' : 'text-left'">
+                        <strong><span th:text="${message.sender.id == currentUser.id} ? 'Tu' : ${message.sender.getFirstName() + ' ' + message.sender.getLastName()}"></span>: </strong>
+                        <span th:text="${message.content}"></span>
+                    </p>
+                </div>
+                <div id="new-messages"></div>
+            </div>
+            <form id="chat-form" onsubmit="return sendMessage()">
+                <div class="input-group">
+                    <input type="text" id="message-input" class="form-control" placeholder="Scrivi un messaggio...">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary" style="background-color: red">Invia</button>
+                    </div>
+                </div>
+                <input type="hidden" id="current-user-id" th:value="${currentUser.id}">
+                <input type="hidden" id="receiver-id" th:value="${passenger != null ? passenger.user.id : biker.user.id}">
+                <input type="hidden" id="trip-id" th:value="${tripId}">
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script>
+    var stompClient = null;
+
+    function connect() {
+        var socket = new SockJS('/chat');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function(frame) {
+            console.log('Connected: ' + frame);
+            stompClient.subscribe('/topic/messages', function(messageOutput) {
+                showMessage(JSON.parse(messageOutput.body));
+            });
+        });
+    }
+
+    function sendMessage() {
+        var senderId = document.getElementById('current-user-id').value;
+        var receiverId = document.getElementById('receiver-id').value;
+        var tripId = document.getElementById('trip-id').value;
+        var content = document.getElementById('message-input').value;
+        if (content.trim() !== "") {
+            stompClient.send("/app/message", {}, JSON.stringify({
+                'senderId': senderId,
+                'receiverId': receiverId,
+                'tripId': tripId,
+                'content': content
+            }));
+            document.getElementById('message-input').value = '';
+        }
+        return false; // prevent default form submission
+    }
+
+    function showMessage(message) {
+        var newMessages = document.getElementById('new-messages');
+        var messageElement = document.createElement('p');
+        messageElement.className = message.senderId === document.getElementById('current-user-id').value ? 'text-right' : 'text-left';
+        messageElement.innerHTML = '<strong>' + (message.senderId === document.getElementById('current-user-id').value ? 'Tu' : message.senderName) + ':</strong> ' + message.content;
+
+        newMessages.appendChild(messageElement);
+
+        newMessages.scrollTop = newMessages.scrollHeight;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        connect();
+    });
+</script>
+<div th:replace="footer :: html"></div>
+</body>
+</html>

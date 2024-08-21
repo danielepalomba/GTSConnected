@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+<div class="big">
+    <div th:if="${trips.isEmpty()}" class="col-12" style="text-align: center">
+        <h1 class="text-center">Nessun viaggio disponibile al momento</h1>
+    </div>
+    <div class="trips-container">
+        <div th:each="trip : ${trips}" th:if="${!trips.isEmpty()}" class="trip">
+            <img th:src="${trip.getImageUrl()}" alt="photo">
+            <div class="trip-info">
+                <h2><span th:text="${trip.getDeparturePlace()}"></span> - <span th:text="${trip.getArrivalPlace()}"></span></h2>
+                <p class="grey-text">Data e ora di partenza: <span th:text="${trip.getDepartureTimeFormatted()}"></span></p>
+                <p class="grey-text">Stato del viaggio: <span th:text="${trip.getState().getLabelToShow()}"></span></p>
+            </div>
+            <div class="details-btn" th:style="${#authorization.expression('hasRole(''ROLE_ADMIN'')')} ? 'display: flex; justify-content: center; gap: 10px;' : 'display: flex; justify-content: center;'">
+                <button th:onclick="|location.href='@{/book/{id}(id=${trip.id})}'|">Dettagli</button>
+                <form id="deleteFormAdmin" th:action="@{/users/cancel-trip-admin}" method="post">
+                    <input type="hidden" th:value="${trip.id}" name="id">
+                    <button id="delete-btn" type="submit" class="btn btn-danger" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 100px;"></div>
+<div th:replace="footer :: html"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="/js/confirm-delete.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+body{
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 30%;
+    margin: 5% auto 5% auto;
+    padding: 3%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: 65vh;
+}
+
+.container-img{
+    border-top: 3px solid red;
+    text-align: center;
+}
+
+.container-img img{
+    width: 50%;
+    max-width: 300px;
+}
+
+.container-err{
+    text-align: left;
+}
+
+.container-err h1{
+    width: 9%;
+}
+
+.container-err p{
+    margin-left: 1%;
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+        width: 90%;
+        margin-top: 15%;
+    }
+
+}

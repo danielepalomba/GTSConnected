@@ -1,0 +1,98 @@
+body{
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 70%;
+    margin: 20px auto 10px;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 1fr;
+}
+
+.data-container{
+    padding: 2%;
+}
+
+.wrapper-container{
+    border-top: 3px solid red;
+    border-bottom: 3px solid red;
+}
+
+.container-img{
+    display: flex;
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+}
+
+.container-img img{
+    width: 60%;
+    margin: auto;
+    border-radius: 100px;
+}
+
+.container-btn{
+    text-align: center;
+    background-color: rgb(213, 213, 254);
+    border-radius: 10px;
+    padding: 2%;
+    margin-top: 20px;
+}
+
+.delete-account-btn{
+    text-align: center;
+    border-radius: 10px;
+    padding: 2%;
+    background-color: rgb(255, 201, 201);
+    margin-top: 20px;
+}
+
+.btns-container{
+    display: block;
+}
+
+.funct-btn{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px){
+    body{
+        font-size: 0.8em;
+    }
+
+    .container{
+        width: 90%;
+    }
+
+    .container-img{
+        width: 95%;
+    }
+
+    .container-img h3{
+        font-size: 1.2em;
+    }
+    .container-img img{
+        width: 45%;
+    }
+
+    .container-btn{
+        padding: 5%;
+    }
+
+    .delete-account-btn{
+        padding: 5%;
+    }
+
+    .btns-container{
+        display: block;
+    }
+}

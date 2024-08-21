@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/footer-style.css">
+</head>
+<body>
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h4>Informazioni</h4>
+            <p><a th:href="@{/policy}" class="text-white">Termini e Condizioni</a></p>
+        </div>
+        <div class="footer-section">
+            <h5>Contatti</h5>
+            <p><a th:href="@{/faq}" class="text-white">FAQ</a></p>
+            <p><a href="mailto:gtsnowconnected@gmail.com" class="text-white">gtsnowconnected@gmail.com</a></p>
+            <p>Zona: Castellammare di Stabia, 80053 NA, Italia</p>
+        </div>
+        <div class="footer-section">
+            <h4>Seguici</h4>
+            <a href="#">Instagram</a>
+            <a href="#">Whatsapp</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 GTSConnected. Tutti i diritti riservati.</p>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

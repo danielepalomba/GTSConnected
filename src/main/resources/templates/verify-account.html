@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/verify-account.css">
+    <title>Account verificato</title>
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+<div class="container">
+    <h3>Account verificato!</h3>
+    <p>Il tuo account è attivo, effettua il login per accedere.</p>
+    <div class="img-container">
+        <img src="https://page-imgs.s3.eu-north-1.amazonaws.com/email-verified.png" alt="Account verificato">
+    </div>
+    <button th:onclick="|location.href='@{/login}'|">Vai al login</button>
+</div>
+<div th:replace="footer :: html"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</html>

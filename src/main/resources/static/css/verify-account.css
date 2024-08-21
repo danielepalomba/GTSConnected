@@ -1,0 +1,51 @@
+body{
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px auto 20px auto;
+    padding: 3%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container button{
+    color: #fff;
+    background-color: red;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    width: 40%;
+    margin: auto;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    margin: 2% auto 5% auto;
+}
+
+.img-container img {
+    object-fit: cover;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+        margin-top: 15%;
+    }
+
+    .container button {
+        width: 70%;
+    }
+}
+
+
+

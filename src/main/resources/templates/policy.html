@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Policy</title>
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+<div class="mcontainer">
+    <h3>I nostri Termini e Condizioni</h3>
+    <p>Quando ti registri sul nostro sito, raccogliamo i seguenti dati personali: email, password (archiviata in forma criptata), nome, cognome e data di nascita. Questi dati vengono inseriti nel nostro database e trattati con strumenti informatici e telematici, adottando misure di sicurezza idonee a proteggere la tua privacy. <br>
+
+        I dati che raccogliamo sono utilizzati per creare e gestire il tuo account, inviarti comunicazioni importanti riguardanti il tuo account o i nostri servizi, offrirti un'esperienza personalizzata sul nostro sito e proteggere il tuo account da accessi non autorizzati. Trattiamo i tuoi dati personali sulla base del consenso che hai espresso al momento della registrazione e della necessità di eseguire un contratto di cui sei parte. <br>
+
+        I tuoi dati personali saranno conservati per il tempo necessario a conseguire le finalità per cui sono stati raccolti e comunque non oltre i termini previsti dalla legge. Non condivideremo i tuoi dati personali con terze parti, salvo obblighi di legge. <br>
+
+        Hai il diritto di accedere ai tuoi dati personali, richiederne la correzione, la cancellazione, la limitazione del trattamento e opporti al trattamento in determinate circostanze. Puoi anche richiedere di ricevere i tuoi dati personali in un formato strutturato, di uso comune e leggibile da dispositivo automatico. <br>
+
+        Il nostro sito utilizza cookie per migliorare la tua esperienza di navigazione. Puoi gestire le tue preferenze sui cookie tramite le impostazioni del tuo browser. <br>
+        Per qualsiasi domanda o richiesta riguardante la tua privacy, puoi contattarci al seguente indirizzo email: [gtsnowconnected@gmail.com]. Eventuali modifiche alla presente Informativa sulla Privacy saranno comunicate tramite il nostro sito web. Ti invitiamo a consultare regolarmente questa pagina per eventuali aggiornamenti.</p> <br>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<div th:replace="footer :: html"></div>
+</body>
+<style>
+    body{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .mcontainer{
+        width: 60%;
+        margin: 10px auto;
+        border-top: 6px solid red;
+        border-bottom: 6px solid red;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        padding: 2%;
+    }
+
+    @media screen and (max-width: 768px){
+
+        .mcontainer{
+            font-size: 0.9em;
+            width: 80%;
+            padding: 4%;
+        }
+
+    }
+</style>
+</html>

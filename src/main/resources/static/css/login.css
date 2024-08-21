@@ -1,0 +1,98 @@
+body{
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 3%;
+}
+
+.grid-container {
+    margin-top: 3%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+}
+
+.container form{
+    display: grid;
+    grid-template-rows: 0.2fr 0.2fr 0.1fr 0.3fr;
+}
+
+.container form .group {
+    margin-bottom: 15px;
+}
+
+#passwordError {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.container form input[type="password"], .container form input[type="email"]{
+    width: 100%;
+    padding: 2%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.container form input[type="password"]:focus, .container form input[type="email"]:focus{
+    background-color: rgb(255, 240, 240);
+}
+
+.container form input[type="submit"] {
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.container form input[type="submit"]:hover {
+    background-color: maroon;
+}
+
+.img-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.alert-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+}
+
+.alert-div p{
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+
+}
+
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .container form input[type="submit"] {
+        margin-top: 20px;
+    }
+
+    #passwordError {
+        margin-bottom: 15px;
+    }
+}

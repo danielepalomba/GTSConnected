@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>About Us</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+<div class="container">
+    <h2>About Us</h2>
+    <h5 class="border-top-red">Chi siamo?</h5>
+    <p class="paragraph">
+        Benvenuti sul sito ufficiale dei GTS, un gruppo motociclistico nato dalla passione e dall'amicizia di un gruppo di ragazzi Campani. Uniti dall'amore per le due ruote e dalla voglia di avventura, abbiamo deciso di fondare i GTS per condividere con altri bikers le emozioni dei nostri viaggi e l'adrenalina delle nostre avventure.
+    </p>
+    <h5 class="border-top-red">Perchè i GTS?</h5>
+    <p class="paragraph">La nostra missione è quella di creare una comunità che unisca quanti più appassionati possibile, offrendo un punto di incontro virtuale dove poter organizzare e partecipare ai nostri emozionanti tour. Che tu sia un biker esperto o un neofita, con i GTS troverai sempre un'opportunità per vivere la tua passione per il motociclismo.
+    </p>
+    <h5 class="border-top-red">I nostri viaggi</h5>
+    <p class="paragraph">Sul nostro sito, troverai tutte le informazioni sui viaggi che organizziamo: dalle mete più affascinanti agli itinerari più suggestivi, dalle date di partenza ai dettagli logistici. Ogni viaggio è pensato per garantire il massimo divertimento e sicurezza per tutti i partecipanti.
+    </p>
+    <h5 class="border-top-red">Non hai una moto? Ci pensiamo noi!</h5>
+    <p class="paragraph">E non preoccuparti se non possiedi una moto! Anche i 'non motociclisti' sono i benvenuti nei nostri tour. Hai la possibilità di prenotarti come passeggero e vivere l'esperienza di un viaggio in moto affiancando uno dei nostri biker esperti. È un'occasione unica per scoprire il mondo del motociclismo in un modo nuovo e coinvolgente.
+    </p>
+    <h5 class="border-top-red">Ti abbiamo convinto?</h5>
+    <p class="paragraph">Unisciti a noi, scopri le nostre prossime avventure e preparati a vivere momenti indimenticabili. I GTS non sono solo un gruppo motociclistico, ma una grande famiglia che condivide la stessa passione e lo stesso spirito di libertà.
+    </p>
+    <p class="paragraph">Per ulteriori informazioni sui nostri viaggi o per prenotare il tuo posto, esplora il nostro sito e non esitare a contattarci. Siamo sempre felici di accogliere nuovi membri e di condividere con loro la nostra passione per le due ruote. <br><br>
+
+        Benvenuti nei GTS, dove la strada è il nostro mondo e la passione il nostro motore.</p>
+</div>
+<div th:replace="footer :: html"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<style>
+    body{
+        font-family: Arial, sans-serif;
+    }
+
+    .paragraph{
+        padding: 2%;
+    }
+
+    .border-top-red{
+        border-bottom: 3px solid red;
+        padding: 10px;
+    }
+</style>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/register.css">
+    <title>Login</title>
+    <style>
+        .group {
+            position: relative;
+        }
+        .group input[type="date"]:before {
+            content: attr(data-placeholder);
+            position: absolute;
+            top: 60%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: #999;
+            pointer-events: none;
+        }
+        .group input[type="date"]:focus:before,
+        .group input[type="date"]:valid:before {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+
+<div class="container">
+    <h2>Inizia a condividere con noi la tua passione. Registrati!</h2>
+    <p th:text="${error}" style="color: red;"></p>
+    <div class="grid-container">
+        <div class="img-container">
+            <img src="https://page-imgs.s3.eu-north-1.amazonaws.com/register.png" alt="img">
+        </div>
+        <form th:action="@{/register}" method="post" th:object="${registrationForm}">
+            <div class="group">
+                <input type="email" id="username" name="username" placeholder="Email" th:field="*{email}" required>
+            </div>
+            <div class="group">
+                <input type="password" name="password" id="password" placeholder="Password" th:field="*{password}" required>
+            </div>
+            <div class="group">
+                <input type="text" name="name" id="name" placeholder="Nome" th:field="*{name}" required>
+            </div>
+            <div class="group">
+                <input type="text" name="surname" id="surname" placeholder="Cognome" th:field="*{surname}" required>
+            </div>
+            <div class="group">
+                <input type="date" class="form-control" name="dateBirth" id="dataBirth" th:field="*{birth}" required data-placeholder="*Data di nascita">
+            </div>
+            <div class="group">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">Accetto <a th:href="@{/policy}">termini e condizioni</a></label>            </div>
+            <div class="newsletter-container">
+                <input type="checkbox" id="newsletter" th:field="*{newsletter}">
+                <label id="newsletter-msg" for="newsletter">Mantienimi aggiornato sui nuovi viaggi</label>
+            </div>
+            <input type="submit" value="Registrati">
+        </form>
+    </div>
+</div>
+<div th:replace="footer :: html"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script></body>
+</html>

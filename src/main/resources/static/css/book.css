@@ -1,0 +1,115 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+.grey-text{
+    color: #777;
+}
+
+.bold-text{
+    font-weight: bold;
+}
+
+.container{
+    width: 90%;
+    margin: 20px auto;
+}
+
+.trip-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.img-container{
+    width: 100%;
+}
+
+.img-container img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+}
+
+.share-container button{
+    border: none;
+    background-color: #ffffff;
+}
+
+.share-container img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+    max-width: 30px;
+}
+
+.share-container{
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    text-align: left;
+    padding: 0 20px 0 20px;
+    width: 100%;
+}
+
+.form-container{
+    padding: 20px;
+}
+
+.trip-info{
+    padding: 20px;
+}
+
+.form-container form{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1.5fr 0.5fr 1fr;
+    gap: 10px;
+}
+
+.form-container form input[type="submit"]{
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    border: none;
+    color: #fff;
+    background-color: red;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+
+.form-container form input[type="submit"]:hover{
+    background-color: #680000;
+}
+
+.form-container form input[type="text"]{
+    width: 100%;
+    padding: 2%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.checkbox-container{
+    display: flex;
+    font-style: italic;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.table-responsive{
+    overflow-x: auto;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px){
+    .container{
+        width: 100%;
+    }
+}

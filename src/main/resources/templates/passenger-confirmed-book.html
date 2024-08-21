@@ -1,0 +1,28 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <title>Prenotazione confermata</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/pass-confirmed-book.css">
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+<div class="container">
+    <div class="grid-container">
+        <div class="info-container">
+            <h5 class="card-title">Prenotazione confermata</h5>
+            <p>La tua prenotazione come passeggero è stata inoltrata con successo. Controlla la tua email per ulteriori aggiornamenti. E' possibile inoltre visualizzare lo stato della prenotazione nella sezione <strong>Le mie richieste</strong>.</p>
+            <div class="img-container">
+                <img src="https://page-imgs.s3.eu-north-1.amazonaws.com/prenotazione-pass-confermata.png" alt="img">
+            </div>
+            <button th:onclick="|location.href='@{/home}'|">Home</button>
+        </div>
+    </div>
+</div>
+<div th:replace="footer :: html"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</html>

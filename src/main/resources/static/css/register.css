@@ -1,0 +1,70 @@
+body{
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    margin-top: 5%;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3%;
+}
+
+.grid-container form{
+    padding: 2%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 1fr 0.5fr;
+}
+
+form input[type="submit"]{
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+form input[type="text"], form input[type="password"], form input[type="email"]{
+    width: 100%;
+    padding: 2%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+form input[type="text"]:focus, form input[type="password"]:focus, form input[type="email"]:focus{
+    background-color: rgb(255, 240, 240);
+}
+
+
+@media screen and (max-width: 768px){
+    .grid-container{
+        grid-template-columns: 1fr;
+    }
+
+    .container h2{
+        font-size: 1.5em;
+    }
+
+    .container{
+        margin-top: 10%;
+    }
+
+    .img-container{
+        width: 90%;
+        margin: auto;
+    }
+
+    .img-container img{
+        max-width: 300px;
+    }
+}

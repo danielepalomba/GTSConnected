@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Viaggi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/all-trips.css">
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <label for="roleSelector">Filtra viaggi:</label>
+            <select id="roleSelector" name="roleSelector" class="form-control">
+                <option value="all">Tutti</option>
+                <option value="biker">Da Biker</option>
+                <option value="passenger">Da Passeggero</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="noTripsMessage" class="row mt-3" style="display: none;">
+        <div class="col-md-12">
+            <div class="alert alert-info" role="alert">
+                Non ci sono viaggi qui!
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <img src="https://page-imgs.s3.eu-north-1.amazonaws.com/all-trips.png" alt="biker" style="width: 100%; max-width: 400px; height: auto;">
+            </div>
+        </div>
+    </div>
+
+    <div id="bikerTrips" class="row mt-3" th:if="${!bikerTrips.isEmpty()}">
+        <div th:each="trip : ${bikerTrips}" class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="img-container">
+                        <img th:src="${trip.getImageUrl()}" alt="photo">
+                    </div>
+                    <p class="card-text">
+                        Partenza: <span th:text="${trip.getDeparturePlace()}"></span><br>
+                        Arrivo: <span th:text="${trip.getArrivalPlace()}"></span><br>
+                        Data di partenza: <span th:text="${trip.getDepartureTimeFormatted()}"></span><br>
+                        Stato: <span th:text="${trip.getState().toString().toLowerCase()}"></span>
+                    </p>
+                    <div class="btn-container">
+                        <button class="details-btn" th:onclick="|location.href='/users/trip-details?id=' + ${trip.id}|">Dettagli del viaggio</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="passengerTrips" class="row mt-3" th:if="${!passengerTrips.isEmpty()}" style="display: none">
+        <div th:each="trip : ${passengerTrips}" class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="img-container">
+                        <img th:src="${trip.getImageUrl()}" alt="photo">
+                    </div>
+                    <p class="card-text">
+                        Partenza: <span th:text="${trip.getDeparturePlace()}"></span><br>
+                        Arrivo: <span th:text="${trip.getArrivalPlace()}"></span><br>
+                        Data di partenza: <span th:text="${trip.getDepartureTimeFormatted()}"></span><br>
+                        Stato: <span th:text="${trip.getState().toString().toLowerCase()}"></span>
+                    </p>
+                    <div class="btn-container">
+                        <button class="details-btn" th:onclick="|location.href='/users/trip-details?id=' + ${trip.id}|">Dettagli del viaggio</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="/js/list-trips.js"></script>
+<div th:replace="footer :: html"></div>
+</body>
+</html>

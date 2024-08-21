@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+         .dropdown-menu {
+             transition: all 2.0s ease;
+         }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="my_nav">
+    <a class="navbar-brand" href="/home"> <img src="https://page-imgs.s3.eu-north-1.amazonaws.com/logo-removebg.png"
+                                               alt="logo" class="img-fluid" style="max-width: 50px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/login}"
+                   th:if="${#authorization.expression('!isAuthenticated()')}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/register}" th:if="${#authorization.expression('!isAuthenticated()')}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/users/all-trips}"
+                   th:if="${#authorization.expression('isAuthenticated()')}">I miei viaggi</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                   th:if="${#authorization.expression('isAuthenticated()')}">Area personale</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" th:href="@{/users/user-details}">Dettagli utente</a>
+                    <a class="dropdown-item" href="/users/user-details/change-password">Cambia password</a>
+                    <a class="dropdown-item" href="/users/user-details/manage-book">I miei passeggeri</a>
+                    <a class="dropdown-item" href="/users/user-details/passenger-requests">Le mie richieste</a>
+                    <a class="dropdown-item" th:href="@{/logout}">Logout</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/users/new-trip}"
+                   th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">Inserisci nuovo viaggio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/about}">Chi siamo?</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</html>

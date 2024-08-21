@@ -1,0 +1,56 @@
+body{
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 30%;
+    border-radius: 10px;
+    margin: 5% auto 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+    padding: 2%;
+}
+
+.info-container{
+    width: 100%;
+    margin: auto;
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.img-container{
+    width: 80%;
+    margin: 5% auto;
+}
+
+.img-container img{
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#info{
+    font-style: oblique;
+    line-height: 200%;
+    overflow-wrap: break-word;
+}
+
+@media screen and (max-width: 768px){
+    .container{
+        width: 90%;
+        margin-top: 10%;
+    }
+
+    .info-container{
+        width: 90%;
+    }
+
+    #info{
+        font-size: 0.8em;
+    }
+}
+

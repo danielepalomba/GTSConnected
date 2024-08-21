@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Prenotazione passeggero</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/book-passenger.css">
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+
+<div class="container">
+    <div class="info-container">
+        <h3 class="card-title" th:text="'Stai per prenotare un giro in sella con ' + ${biker.user.firstName}"></h3>
+        <p class="card-text" th:text="'Per ulteriori informazioni, puoi contattare ' + ${biker.user.firstName} + ' qui: ' + ${biker.user.email}"></p>
+    </div>
+    <div class="btn-container">
+        <form th:action="@{/users/book-passenger/{bikerId}(bikerId=${biker.id})}" method="post">
+            <button type="submit">Prenota</button>
+            <a id="go-back" href="/home">Annulla</a>
+        </form>
+    </div>
+</div>
+<div th:replace="footer :: html"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script></body>
+</html>

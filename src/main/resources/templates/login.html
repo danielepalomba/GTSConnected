@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Login</title>
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+
+<div class="container">
+    <h2>GTS Connected ti da il benvenuto!</h2>
+    <div class="grid-container">
+        <div class="img-container">
+            <img src="https://page-imgs.s3.eu-north-1.amazonaws.com/login.png" alt="img">
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div class="group">
+                <input type="email" id="username" name="username" placeholder="Email" required>
+            </div>
+            <div class="group">
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <a class="pass-link" href="/lost-password">Hai dimenticato la password?</a>
+            </div>
+            <input type="submit" value="Accedi">
+            <div class="alert-div" th:if="${param.error}" role="alert">
+                <p>Email o password errati</p>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="footer :: html"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script></body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pending Requests</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/passenger-requests.css">
+</head>
+<body>
+<div th:replace="navbar :: html"></div>
+
+<div class="container" style="margin: 15px auto 15px auto;">
+    <div id="noRequestMessage" class="row mt-3" th:if="${passengers.isEmpty()}" style="text-align: center">
+        <div class="col-md-12">
+            <div class="alert alert-info" role="alert">
+                Non hai effettuato nessuna richiesta come passeggero!
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <img src="https://page-imgs.s3.eu-north-1.amazonaws.com/manage-book.png" alt="biker" style="width: 100%; max-width: 400px; height: auto;">
+            </div>
+            <a href="/home" class="btn btn-primary mt-3" style="background-color: red; border: none;">Torna alla Home</a>
+        </div>
+    </div>
+    <h2 th:if="${!#lists.isEmpty(passengers)}">Le mie richieste</h2>
+    <div class="row">
+        <div th:each="passenger : ${passengers}" class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="img-container">
+                        <img src="https://page-imgs.s3.eu-north-1.amazonaws.com/passenger-request.png" alt="photo">
+                    </div>
+                    <h5 class="card-title" th:text="${passenger.biker.trip.departurePlace} + ' - ' + ${passenger.biker.trip.arrivalPlace}"></h5>
+                    <p class="card-text">
+                        <strong>Biker:</strong> <span th:text="${passenger.biker.user.firstName} + ' ' + ${passenger.biker.user.lastName}"></span><br>
+                        <strong>Data partenza:</strong> <span th:text="${passenger.biker.trip.getDepartureTimeFormatted()}"></span><br>
+                        <strong>Data arrivo:</strong> <span th:text="${passenger.biker.trip.getArrivalTimeFormatted()}"></span><br>
+                        <strong>Partecipanti: </strong> <span th:text="${passenger.biker.trip.getBikers().size()}"></span><br>
+                        <strong>Stato prenotazione: </strong>
+                        <span th:text="${passenger.accept ? 'Confermato' : ''}" class="text-success"></span>
+                        <span th:unless="${passenger.accept}" class="text-warning">In attesa</span><br>
+                        <a th:if="${passenger.accept && passenger.biker.trip.state.getLabel() != 'FINISHED'}" th:href="@{/users/user-details/passenger-requests/chat/{bikerId}(bikerId=${passenger.biker.id})}" class="btn btn-primary" style="background-color: red; border: none; color: white; width: 100%; margin-top: 10px;">Apri chat</a>                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 100px;"></div>
+<div th:replace="footer :: html"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

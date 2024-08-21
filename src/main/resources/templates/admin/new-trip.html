@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inserisci nuovo viaggio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="navbar :: nav"></div>
+<div class="container mt-5">
+    <h2>Inserisci nuovo viaggio</h2>
+    <form th:action="@{/users/new-trip}" th:object="${tripForm}" method="post" enctype="multipart/form-data" style="padding-bottom: 2%;">
+        <div class="form-group">
+            <label for="departurePlace">Partenza</label>
+            <input type="text" class="form-control" id="departurePlace" th:field="*{departurePlace}" required>
+        </div>
+        <div class="form-group">
+            <label for="arrivalPlace">Arrivo</label>
+            <input type="text" class="form-control" id="arrivalPlace" th:field="*{arrivalPlace}" required>
+        </div>
+        <div class="form-group">
+            <label for="departureTime">Data di partenza</label>
+            <input type="datetime-local" class="form-control" id="departureTime" th:field="*{departureTime}" required>
+        </div>
+        <div class="form-group">
+            <label for="arrivalTime">Data di arrivo</label>
+            <input type="datetime-local" class="form-control" id="arrivalTime" th:field="*{arrivalTime}" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Immagine</label>
+            <select class="form-control" id="image" name="image">
+                <option value="">Seleziona un'immagine esistente</option>
+                <option th:each="image : ${images}" th:value="${image}" th:text="${image}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="newImage">Carica nuova immagine</label>
+            <input type="file" class="form-control" id="newImage" name="newImage">
+        </div>
+        <div class="form-group">
+            <label for="note">Note sul viaggio</label>
+            <textarea class="form-control" id="note" th:field="*{note}" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="background-color: red">Crea nuovo</button>
+    </form>
+    <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
